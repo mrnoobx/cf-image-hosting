@@ -8,8 +8,4 @@ kv_namespaces = [
 [env.production.vars]
 API_HOST = "https://telegra.ph"
 img_url = "file_url"
-
-[env.production]
-kv_namespaces = [
-  { binding = "file_url", id = "kv_id"}
 ]
