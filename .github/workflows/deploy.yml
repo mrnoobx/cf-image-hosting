@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Cloudflare Deployment
+    name: Cloudflare Pages Deployment
     
     steps:
       - name: Checkout Repository
@@ -22,7 +22,13 @@ jobs:
       - name: Install Bun
         run: npm install --global bun
 
-      - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Install Wrangler
+        run: npm install --save-dev wrangler@4
+
+      - name: Build Project
+        run: bun run build  # Ensure this creates the `dist/` folder
+
+      - name: Deploy to Cloudflare Pages
+        run: npx wrangler pages deploy ./dist --project-name cf-image-hosting
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
