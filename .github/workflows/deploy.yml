@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Dxx
+name: Deploy to Cloudflare Dxx🍁
 
 on:
   push:
