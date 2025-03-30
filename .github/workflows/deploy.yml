@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare b
+name: Deploy to Cloudflare D
 
 on:
   push:
